@@ -2,7 +2,9 @@
 title: 'Reproducible Research: Course Project 2'
 author: "Alicia Rodriguez"
 date: "3/19/2017"
-output: html_document
+output: 
+  html_document:
+    keep_md: true
 ---
 
 ```{r setup, include=FALSE}
@@ -18,7 +20,7 @@ This documents provides an analysis of the impact on public health and on econom
 ## Downloading, Reading and Processing the Raw Data
 
 First, let's download the data and load the content using the option as.is in order to load the contents with no transformations:
-```{r downloading_data, cache=TRUE}
+```{r downloading_data}
   download.file("https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2", 
                 destfile="./original_data.csv.bz2", method="curl")
 ```
@@ -210,7 +212,7 @@ economy$MEAN<-economy$MEAN_PROPDMG+economy$MEAN_CROPDMG
 economy<-economy[order(economy$TOTAL,decreasing = T),]
 ```
 
-Let's have a look at the 10 first rows of data frame created with the publich health impact data, i.e., at the weather events with the highest impact and, thus, those we will focus on.
+Let's have a look at the 10 first rows of data frame created with the economy impact data, i.e., at the weather events with the highest impact and, thus, those we will focus on.
 ```{r check_economy_summary}
 head(economy,n=10)
 ```
